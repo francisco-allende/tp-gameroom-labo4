@@ -22,5 +22,5 @@ export const appConfig: ApplicationConfig = {
       "apiKey":"AIzaSyCg2VKIpXGwr-MRyKUYP8Zti9np40FGviw",
       "authDomain":"tp-gameroom-allende.firebaseapp.com",
       "messagingSenderId":"533090559504"}))), 
-    importProvidersFrom(provideAuth(() => getAuth())), importProvidersFrom(provideFirestore(() => getFirestore()))]
+    importProvidersFrom(provideAuth(() => getAuth())), importProvidersFrom(provideFirestore(() => getFirestore())), importProvidersFrom(provideFirebaseApp(() => initializeApp({"projectId":"tp-gameroom-allende","appId":"1:533090559504:web:0cf41f78c5e4ef25a68c95","storageBucket":"tp-gameroom-allende.appspot.com","apiKey":"AIzaSyCg2VKIpXGwr-MRyKUYP8Zti9np40FGviw","authDomain":"tp-gameroom-allende.firebaseapp.com","messagingSenderId":"533090559504"}))), importProvidersFrom(provideAuth(() => getAuth())), importProvidersFrom(provideFirestore(() => getFirestore()))]
 };
