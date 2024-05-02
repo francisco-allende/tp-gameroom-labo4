@@ -1,0 +1,66 @@
+<header class="app-header navbar mian-nav">
+    <div class="d-flex align-items-center">
+
+      <!-- Menu lateral -->
+      <div class="d-none d-md-flex btn-nav-end">
+        <button class="navbar-toggler btn-menu" type="button">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+
+    </div>
+  
+    <ul class="nav navbar-nav ml-auto">
+        <li class="nav-item">
+          <div class="container">
+            <div class="row">
+              <!-- Contenido de la primera opción del navbar (fecha y puntaje) -->
+              <div class="col-md-auto">
+                <span class="d-block">
+                  <small class="float-left pr-1">Puntaje total:</small>
+                  <small class="float-right">puntaje</small>
+                </span>
+                <span class="d-block">
+                  <small class="float-left pr-1">Bonus:</small>
+                  <small class="float-right">+50xp</small>
+                </span>
+              </div>
+            </div>
+          </div>
+        </li>
+      
+        <li class="nav-item">
+          <!-- Datos del usuario (nombre y email) -->
+          @if(currentUser){
+            <div class="d-flex align-items-center ml-3">
+              <div class="mr-3">
+                <small class="d-block">Email: {{ currentUser.email }}</small>
+              </div>
+            </div>
+          }
+        </li>
+      
+        <li class="nav-item">
+          <!-- Botones de usuario y logout -->
+          @if(currentUser){
+            <div class="d-flex align-items-center ml-3">
+              <div class="mr-3">
+                <!-- Enlace al perfil del usuario -->
+                <a class="btn btn-outline-info rounded-circle" href="#" [routerLink]="['/perfil']" tooltip="Mi Perfil" placement="bottom" container="body">
+                  <fa-icon [icon]="faUser" class="font-xs"></fa-icon>
+                </a>
+              </div>
+              <div class="btn-nav-end">
+                <!-- Cerrar sesión -->
+                <a class="btn btn-outline-danger rounded-circle" href="#" (click)="logout()" tooltip="Cerrar Sesión" placement="bottom" container="body">
+                  <fa-icon [icon]="faPowerOff" class="font-xs"></fa-icon>
+                </a>
+              </div>
+            </div>
+          }
+        </li>
+    </ul> 
+             
+
+  </header>
+  

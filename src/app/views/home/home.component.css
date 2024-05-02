@@ -1,0 +1,23 @@
+.d-flex>div {
+    float: none;
+}
+
+.col-auto {
+    flex: 0 0 auto;
+    width: auto;
+    max-width: none;
+}
+
+.nombre {
+    display: block;
+    font-weight: 300;
+}
+
+.btn {
+        color: white;
+        border-color: white;
+}
+
+main{
+    background-color: rgb(145, 228, 241);
+}
