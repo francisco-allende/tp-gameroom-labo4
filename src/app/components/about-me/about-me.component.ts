@@ -4,9 +4,9 @@ import { Component } from '@angular/core';
   selector: 'app-quien-soy',
   standalone: true,
   imports: [],
-  templateUrl: './quien-soy.component.html',
-  styleUrl: './quien-soy.component.css'
+  templateUrl: './about-me.component.html',
+  styleUrl: './about-me.component.css'
 })
-export class QuienSoyComponent {
+export class AboutMeComponent {
 
 }

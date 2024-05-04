@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { UserModel } from '../../models/user-model';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faPowerOff, faUser, faSearch, } from '@fortawesome/free-solid-svg-icons';
 import { faPlusSquare } from '@fortawesome/free-regular-svg-icons';
-import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -20,12 +20,13 @@ export class HeaderComponent {
   faSearch = faSearch;
   faPlusSquare = faPlusSquare;
 
-  currentUser:UserModel = {email: 'franallende2000@gmail.com', password: 'pepe123'} ;
+  currentUser:UserModel = {email: this._auth.getLoggedUser(), password: ''} ;
 
-  constructor(private _router: Router) {}
+  constructor(private _auth: AuthService, private router: Router) {}
 
-  logout(){
-    this._router.navigateByUrl('/login');
+  logOut(){
+    this._auth.logOut();
+    this.router.navigateByUrl('/login');
   }
 
 }

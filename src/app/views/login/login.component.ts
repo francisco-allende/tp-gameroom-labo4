@@ -1,12 +1,10 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { UserModel } from '../../models/user-model';
 import { FormBuilder, FormGroup, FormControl, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
+import { FirestoreService } from '../../services/firestore.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { Auth, User, signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
-import { addDoc, collection, collectionData, Firestore } from '@angular/fire/firestore';
-import { BehaviorSubject, Subscription } from 'rxjs';
-
 
 @Component({
   selector: 'app-login',
@@ -17,22 +15,14 @@ import { BehaviorSubject, Subscription } from 'rxjs';
 })
 export class LoginComponent {
 
-  @Output() loadLoggedUser:EventEmitter<UserModel> = new EventEmitter<UserModel>();
   loginForm: FormGroup;
+  loginUser: UserModel = {email: '', password: '' }; 
 
-  user: UserModel = {email: '', password: '' }; 
-
-  public loginsCollection:UserModel[] = [];
-  
-  public countLogins:number = 0;
-  private sub!:Subscription;
-
-
-  constructor(private _router: Router, 
-              private fb: FormBuilder,
-              private _toast: ToastrService,
-              public auth: Auth, 
-              public firestore: Firestore) 
+  constructor(private fb: FormBuilder,
+              private router: Router,
+              private toast: ToastrService,
+              private _auth: AuthService,
+              private _firestoreService: FirestoreService) 
               {
                 this.loginForm = this.fb.group({
                   email: ['', [Validators.required, Validators.email]],
@@ -45,14 +35,11 @@ export class LoginComponent {
 
   }
 
-  Login() {
-    let col = collection(this.firestore, 'logins');
-    addDoc(col, { fecha: new Date().toDateString(), userEmail: this.user.email});
-    this.loadLoggedUser.emit();
-    this._router.navigateByUrl('/home');
+  login() {
+    this._firestoreService.addToLogger(this.loginUser.email);
+    this._auth.logIn(this.loginUser);
   }
 
-  register():void{
-    this._router.navigateByUrl('/register');
-  }
+  goToRegister=()=> this.router.navigateByUrl('/register');
+
 }
