@@ -20,6 +20,14 @@ export const routes: Routes = [
         loadComponent: () => import('./views/register/register.component').then((m) => m.RegisterComponent)
     },
     {
+        path: 'ahorcado',
+        loadComponent: () => import('./components/ahorcado/ahorcado.component').then((m) => m.AhorcadoComponent)
+    },
+    {
+        path: 'mayor-or-menor',
+        loadComponent: () => import('./components/mayor-or-menor/mayor-or-menor.component').then((m) => m.MayorOrMenorComponent)
+    },
+    {
         path: 'aboutme',
         loadComponent: () => import('./components/about-me/about-me.component').then((m) => m.AboutMeComponent)
     },

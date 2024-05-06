@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { UserModel } from '../../models/user-model';
 import { Router, RouterLink } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -13,7 +13,7 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit{
   
   faPowerOff = faPowerOff;
   faUser = faUser;
@@ -21,8 +21,17 @@ export class HeaderComponent {
   faPlusSquare = faPlusSquare;
 
   currentUser:UserModel = {email: this._auth.getLoggedUser(), password: ''} ;
+  @Output() sendCurrentUser:EventEmitter<UserModel> = new EventEmitter<UserModel>
 
   constructor(private _auth: AuthService, private router: Router) {}
+
+  ngOnInit(){
+    if(this._auth.getLoggedUser() == ''){
+      this.logOut();
+    }else{
+      this.sendCurrentUser.emit(this.currentUser);
+    }
+  }
 
   logOut(){
     this._auth.logOut();

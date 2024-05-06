@@ -1,0 +1,85 @@
+.main{
+    height: 100vh;
+    background-color: rgb(145, 228, 241);
+}
+
+.title{
+    margin-bottom: 4rem;
+}
+
+.container{
+    padding-top: 2rem;
+}
+
+.letter-to-guess, .letter-to-choose{
+    font-size: xx-large;
+    margin-left: 1rem;
+    margin-top: 1rem;
+}
+
+.juego {
+    display: flex;
+    align-items: flex-start;
+  }
+
+.muñeco {
+    position: absolute; /* Establece el contenedor como posición relativa */
+    display: inline-block;
+    margin-left: 250px;
+  }
+  
+  .cabeza, .cuerpo, .brazo-izquierdo, .brazo-derecho, .pierna-izquierda, .pierna-derecha {
+    position: absolute; /* Establece los elementos como posición absoluta */
+    background-color: #000;
+  }
+  
+  .cabeza {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    top: -40px; 
+    left: 50%; 
+    transform: translateX(-50%); 
+  }
+  
+  .cuerpo {
+    width: 10px;
+    height: 60px;
+    top: 0px; 
+    left: 50%; 
+    transform: translateX(-50%); 
+  }
+  
+  .brazo-izquierdo {
+    width: 60px;
+    height: 10px;
+    top: 20px; 
+    left: -10px; 
+    transform: rotate(55deg);
+  }
+  
+  .brazo-derecho {
+    width: 60px;
+    height: 10px;
+    top: 20px; 
+    right: -10px; 
+    transform: rotate(-55deg);
+  }
+  
+  .pierna-izquierda {
+    width: 60px;
+    height: 10px;
+    top: 80px; 
+    left: -20px; 
+    transform: rotate(65deg);
+  }
+  
+  .pierna-derecha {
+    width: 60px;
+    height: 10px;
+    top: 80px; 
+    right: -20px;
+    transform: rotate(-65deg);
+  }
+  
+  
