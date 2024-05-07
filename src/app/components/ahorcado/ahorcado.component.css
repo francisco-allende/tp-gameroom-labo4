@@ -17,11 +17,6 @@
     margin-top: 1rem;
 }
 
-.juego {
-    display: flex;
-    align-items: flex-start;
-  }
-
 .muñeco {
     position: absolute; /* Establece el contenedor como posición relativa */
     display: inline-block;

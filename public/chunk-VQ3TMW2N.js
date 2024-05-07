@@ -1,0 +1,1 @@
+import{Db as m,da as n,kb as r,lb as a,wb as i}from"./chunk-PTIACT43.js";var d=(()=>{let e=class e{};e.\u0275fac=function(o){return new(o||e)},e.\u0275cmp=n({type:e,selectors:[["app-mayor-or-menor"]],standalone:!0,features:[m],decls:2,vars:0,template:function(o,p){o&1&&(r(0,"p"),i(1,"mayor-or-menor works!"),a())}});let t=e;return t})();export{d as MayorOrMenorComponent};

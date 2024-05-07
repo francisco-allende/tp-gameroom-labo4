@@ -1,1 +1,36 @@
-<p>mayor-or-menor works!</p>
+<app-header (sendCurrentUser)="handleSetUser($event)"></app-header>
+
+<div class="main">
+    <div class="container text-center justify-content-center align-items-center">
+        <div class="title">
+            <h1 >Mayor o Menor</h1>
+            <br>
+            <h2>Carta Actual:</h2>
+        </div>
+     
+        <div class="juego  mx-auto">
+            <div class="card border-dark mb-3 mx-auto" style="max-width: 12rem; min-height: 18rem;">
+                <div class="card-header text-start">{{getPalo()}}</div>
+                <div class="card-body text-dark">
+                  <h5 class="card-title">{{cartaActual.numero}}</h5>
+                </div>
+                <div class="card-footer bg-transparent border-dark-subtle text-end">{{getPalo()}}</div>
+            </div>
+            
+            <div class="d-flex justify-content-evenly align-items-center mx-auto">
+              <button class="btn btn-dark" (click)="checkPrediction(true)">Mayor</button>
+              <button class="btn btn-light" (click)="checkPrediction(false)">Menor</button>
+            </div>
+        
+        </div>
+          
+        <br>
+        <div class="intentos">
+          <h4>Puntos acumulados: {{ puntos }}</h4>
+        </div>
+        <br>
+    
+      </div>  
+</div>
+    
+<app-footer></app-footer>

@@ -1,0 +1,16 @@
+.main{
+    height: 100vh;
+    background-color: rgb(145, 228, 241);
+}
+
+.title{
+    margin-bottom: 2rem;
+}
+
+.container{
+    padding-top: 2rem;
+}
+
+.juego{
+    width: 22%;
+}
