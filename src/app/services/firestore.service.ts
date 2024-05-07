@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { addDoc, collection, collectionData, Firestore, query, orderBy, limit, where, getDocs } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+import { UserModel } from '../models/user-model';
+import { map } from 'rxjs';
 
 
 @Injectable({
@@ -30,28 +33,32 @@ export class FirestoreService {
     }
   }
 
- 
+  async getPuntajeTotalByEmailUser(emailValue: string) {
+    console.log(emailValue);
 
-async getPuntajeTotalByEmailUser(emailValue: string) {
-    const col = collection(this.firestore, 'puntaje-total');
-    const q = query(
-      col, 
-      where('userEmail', '==', emailValue), 
-      orderBy('fecha', 'desc'), 
-      limit(1)
-      );
+      const col = collection(this.firestore, 'puntaje-total');
+      const q = query(
+        col, 
+        where('userEmail', '==', emailValue), 
+        orderBy('fecha', 'desc'), 
+        limit(1)
+        );
+    
+      try {
+          const querySnapshot = await getDocs(q);
+          querySnapshot.forEach((doc) => {
+            console.log(doc.data()['puntajeTotal']);
+              this.puntajeTotal = doc.data()['puntajeTotal'];
+          });
+      } catch (error) {
+          console.error('Error obteniendo el puntaje total:', error);
+      }
+
+      return this.puntajeTotal;
+  }
+
+
+
   
-    try {
-        const querySnapshot = await getDocs(q);
-        querySnapshot.forEach((doc) => {
-          console.log(doc.data()['puntajeTotal']);
-            this.puntajeTotal = doc.data()['puntajeTotal'];
-        });
-    } catch (error) {
-        console.error('Error obteniendo el puntaje total:', error);
-    }
-
-    return this.puntajeTotal;
-}
 
 }

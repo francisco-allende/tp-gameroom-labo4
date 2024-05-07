@@ -21,7 +21,7 @@ export class HeaderComponent implements OnInit{
   faSearch = faSearch;
   faPlusSquare = faPlusSquare;
 
-  puntajeTotal:number = 0;
+  puntajeTotal:number = 0; //componente aparte
 
   currentUser:UserModel = {email: this._auth.getLoggedUser(), password: ''} ;
   @Output() sendCurrentUser:EventEmitter<UserModel> = new EventEmitter<UserModel>

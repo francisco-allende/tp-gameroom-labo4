@@ -4,9 +4,24 @@
             <div class="title">
                 <h1 >Sala de chat</h1>
             </div>
+
+            <div class="container screen">
+                <ul class="list-group">
+
+                    @for(msj of messages; track msj){
+                        <li class="list-group-item">
+                            {{ msj.sender.email }}: {{ msj.content }} {{formatDate(msj.fecha)}}
+                        </li>
+                    }
+
+                </ul>
+            </div>
+    
+            <div class="input-group mt-3">
+                <input type="text" class="form-control" placeholder="Escribe tu mensaje..." [(ngModel)]="newMessage">
+                <button class="btn btn-primary" (click)="sendMessage()">Enviar</button>
+            </div>
          
-         
-        
           </div>  
     </div>
 <app-footer></app-footer>
