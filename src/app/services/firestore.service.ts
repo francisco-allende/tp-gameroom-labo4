@@ -44,6 +44,7 @@ async getPuntajeTotalByEmailUser(emailValue: string) {
     try {
         const querySnapshot = await getDocs(q);
         querySnapshot.forEach((doc) => {
+          console.log(doc.data()['puntajeTotal']);
             this.puntajeTotal = doc.data()['puntajeTotal'];
         });
     } catch (error) {

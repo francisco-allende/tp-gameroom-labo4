@@ -36,6 +36,10 @@ export const routes: Routes = [
         loadComponent: () => import('./components/explicacion-juego-propio/explicacion-juego-propio.component').then((m) => m.ExplicacionJuegoPropioComponent)
     },
     {
+        path: 'sala-chat',
+        loadComponent: () => import('./components/sala-chat/sala-chat.component').then((m) => m.SalaChatComponent)
+    },
+    {
         path: 'error',
         loadComponent: () => import('./views/page-not-found/page-not-found.component').then((m) => m.PageNotFoundComponent)
     },

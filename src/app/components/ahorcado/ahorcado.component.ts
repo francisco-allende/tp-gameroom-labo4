@@ -3,6 +3,7 @@ import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
 import { ToastrService } from 'ngx-toastr';
 import { UserModel } from '../../models/user-model';
+import { FirestoreService } from '../../services/firestore.service';
 
 @Component({
   selector: 'app-ahorcado',
@@ -22,7 +23,8 @@ export class AhorcadoComponent {
 
   @Input() currentUser:any;
 
-  constructor(public toast: ToastrService) {}
+  constructor(public toast: ToastrService,
+            public _firestore: FirestoreService) {}
 
   handleSetUser(e:any){
     this.currentUser = e;
@@ -74,6 +76,7 @@ export class AhorcadoComponent {
   }
 
   gameOver(){
+    this.sendPuntajeTotal();
     this.showPlayAgain = true;
     this.letrasSeleccionadas = this.abecedario;
   }
@@ -85,4 +88,9 @@ export class AhorcadoComponent {
     this.letrasSeleccionadas = [];
     this.intentosFallidos = 0;
   }
+
+  sendPuntajeTotal(){
+    this._firestore.updatePuntajeTotal(this.currentUser, this.puntos);
+  }
+
 }

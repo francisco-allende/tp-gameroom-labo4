@@ -16,7 +16,7 @@ import { FirestoreService } from '../../services/firestore.service';
 export class MayorOrMenorComponent implements OnInit {
 
   @Input() currentUser:any;
-  @Output() updatePuntajeTotal:EventEmitter<number> = new EventEmitter<number>()
+  //@Output() updatePuntajeTotal:EventEmitter<number> = new EventEmitter<number>()
   puntos:number = 0;
 
   cartas: CartaModel[] = [];

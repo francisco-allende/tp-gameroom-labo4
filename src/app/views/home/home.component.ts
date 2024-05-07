@@ -21,6 +21,7 @@ export class HomeComponent implements OnInit {
     { title: 'Mayor o Menor',  text:'Pone a prueba tu intuición y suma puntos en este emociante juego de cartas' , clickText: 'Jugar',  route: '/mayor-or-menor' },
     { title: 'About Me', text:'Conoce al desarrollador de esta sala de juegos', clickText:'Ir', route: '/aboutme' },
     { title: 'Explicacion Juego Propio', text:'Breve tutorial del juego de mi creación', clickText:'Conocer más', route: '/explicacion-juego-propio' },
+    { title: 'Sala de chat', text:'Comparte tus mensajes con otros usuarios de la app', clickText:'Chatear', route: '/sala-chat' },
   ];
 
   constructor(public _auth: AuthService,

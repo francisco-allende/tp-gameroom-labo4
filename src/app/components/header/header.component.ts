@@ -45,8 +45,8 @@ export class HeaderComponent implements OnInit{
   }
 
   async getPoints(){
-    let r = await this._firestore.getPuntajeTotalByEmailUser(this.currentUser.email);
-    console.log(r);
+    this.puntajeTotal = await this._firestore.getPuntajeTotalByEmailUser(this.currentUser.email);
+    console.log(this.puntajeTotal);
   }
 
   
