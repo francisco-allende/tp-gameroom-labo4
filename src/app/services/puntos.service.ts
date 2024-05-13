@@ -68,28 +68,4 @@ export class PuntosService {
     puntajes = puntajes.filter((x:any) => x.juego === juego);
     return puntajes;
   }
-
-  async getAllPuntos() {
-    try {
-      const col = collection(this.firestore, 'puntos');
-      const q = query(col);
-      const querySnapshot = await getDocs(q);
-
-      const users = new Set<string>(); // Usamos un Set ya que firestore no tiene un distinct nativo
-      querySnapshot.forEach(doc => {
-        const data = doc.data();
-        users.add(data['userEmail']); // Agregamos el valor de userEmail al Set
-        users.add(data['juego']);
-        users.add(data['puntos']);
-      });
-
-      // Convertimos el Set a un array y lo retornamos
-      return Array.from(users);
-    } catch (error) {
-      console.error('Error obteniendo los puntos:', error);
-      throw error;
-    }
-  }
-
-  
 }
