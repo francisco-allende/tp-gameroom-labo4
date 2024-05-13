@@ -40,6 +40,10 @@ export const routes: Routes = [
         loadComponent: () => import('./components/sala-chat/sala-chat.component').then((m) => m.SalaChatComponent)
     },
     {
+        path: 'puntaje',
+        loadComponent: () => import('./components/puntaje/puntaje.component').then((m) => m.PuntajeComponent)
+    },
+    {
         path: 'error',
         loadComponent: () => import('./views/page-not-found/page-not-found.component').then((m) => m.PageNotFoundComponent)
     },

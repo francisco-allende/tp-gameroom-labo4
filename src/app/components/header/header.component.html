@@ -1,36 +1,17 @@
 <header class="app-header navbar mian-nav">
     <div class="d-flex align-items-center">
 
-      <!-- Menu lateral -->
+      <!-- Navegación interna -->
       <div class="d-none d-md-flex btn-nav-end">
-        <button class="navbar-toggler btn-menu" type="button">
-          <span class="navbar-toggler-icon"></span>
+        <button class="navbar-toggler btn-menu" type="button" (click)="goBack()">
+          <fa-icon [icon]="faArrowLeft" class="icon-arrow-left"></fa-icon>
         </button>
       </div>
 
     </div>
   
-    <ul class="nav navbar-nav ml-auto">
+    <ul class="nav navbar-nav ml-auto">   
         <li class="nav-item">
-          <div class="container">
-            <div class="row">
-              <!-- Contenido de la primera opción del navbar (fecha y puntaje) -->
-              <div class="col-md-auto">
-                <span class="d-block">
-                  <small class="float-left pr-1">Puntaje total: </small>
-                  <small class="float-right">{{puntajeTotal}}</small>
-                </span>
-                <span class="d-block">
-                  <small class="float-left pr-1">Bonus:</small>
-                  <small class="float-right">+50xp</small>
-                </span>
-              </div>
-            </div>
-          </div>
-        </li>
-      
-        <li class="nav-item">
-          <!-- Datos del usuario (nombre y email) -->
           @if(currentUser){
             <div class="d-flex align-items-center ml-3">
               <div class="mr-3">

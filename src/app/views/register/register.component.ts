@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserModel } from '../../models/user-model';
 import { FormsModule, FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { AuthService } from '../../services/auth.service';
+import { LoginService } from '../../services/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -16,7 +17,8 @@ export class RegisterComponent {
   registerForm!:FormGroup;
 
   constructor(private fb: FormBuilder,
-              public _auth: AuthService) { }
+              public loginService: LoginService,
+              public router: Router) { }
 
   ngOnInit(): void {
     this.registerForm = this.fb.group({
@@ -30,7 +32,7 @@ export class RegisterComponent {
   createUser(){
     if (this.registerForm.valid) {
       if(this.setNewUser()){
-        this._auth.register(this.newUser);
+        this.loginService.register(this.newUser);
       }
     }
   }

@@ -42,7 +42,9 @@ export class ChatService {
     const col = collection(this.firestore, 'sala-chat');
     return collectionData(col).pipe(
       map(mensajes => {
-        return mensajes;
+        return mensajes.sort((a, b) => {
+          return a['fecha'].toDate() - b['fecha'].toDate();
+      });
       })
     );
   }

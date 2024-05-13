@@ -1,15 +1,15 @@
 import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
-import { ToastrService } from 'ngx-toastr';
 import { ChatService } from '../../services/chat.service';
-import { FormBuilder, FormGroup, FormControl, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Timestamp } from 'firebase/firestore';
 
 @Component({
   selector: 'app-sala-chat',
   standalone: true,
-  imports: [HeaderComponent, FooterComponent, FormsModule, ReactiveFormsModule],
+  imports: [HeaderComponent, FooterComponent, FormsModule, ReactiveFormsModule, CommonModule],
   templateUrl: './sala-chat.component.html',
   styleUrl: './sala-chat.component.css'
 })
@@ -34,6 +34,9 @@ export class SalaChatComponent {
     this.newMessage = '';
   }
 
+  itsMe = (msj:any):boolean => msj.sender.email == this.currentUser.email ? true : false
+  
+
   formatDate(timestamp: Timestamp): string {
     const date = timestamp.toDate();
     const day = ('0' + date.getDate()).slice(-2);
@@ -45,8 +48,11 @@ export class SalaChatComponent {
     return `${day}/${month}/${year} ${hours}:${minutes}`;
 }
 
-
-
+setChatNickName(email: string): string {
+  const atIndex = email.indexOf('@');
+  let nickName = atIndex !== -1 ? email.substring(0, atIndex) : email;
+  return nickName;
+}
 
   handleSetUser(e:any){
     this.currentUser = e;

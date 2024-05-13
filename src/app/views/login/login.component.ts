@@ -1,9 +1,8 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { UserModel } from '../../models/user-model';
 import { FormBuilder, FormGroup, FormControl, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AuthService } from '../../services/auth.service';
-import { FirestoreService } from '../../services/firestore.service';
-import { Router } from '@angular/router';
+import { LoginService } from '../../services/login.service';
+import { Router , ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -18,11 +17,11 @@ export class LoginComponent {
   loginForm: FormGroup;
   loginUser: UserModel = {email: '', password: '' }; 
 
+
   constructor(private fb: FormBuilder,
               private router: Router,
               private toast: ToastrService,
-              private _auth: AuthService,
-              private _firestoreService: FirestoreService) 
+              private loginService: LoginService) 
               {
                 this.loginForm = this.fb.group({
                   email: ['', [Validators.required, Validators.email]],
@@ -36,8 +35,15 @@ export class LoginComponent {
   }
 
   login() {
-    this._firestoreService.addToLogger(this.loginUser.email);
-    this._auth.logIn(this.loginUser);
+    this.loginService.addToLogger(this.loginUser.email);
+    this.loginUser.email = this.loginForm.controls['email'].value;
+    this.loginUser.password = this.loginForm.controls['password'].value
+    this.loginService.logIn(this.loginUser);
+  }
+
+  easyLogin(){
+    this.loginForm.controls['email'].setValue('test@gmail.com');
+    this.loginForm.controls['password'].setValue('testtest');
   }
 
   goToRegister=()=> this.router.navigateByUrl('/register');

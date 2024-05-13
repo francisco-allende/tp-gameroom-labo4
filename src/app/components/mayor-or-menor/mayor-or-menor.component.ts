@@ -3,7 +3,7 @@ import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
 import { CartaModel } from '../../models/carta-model';
 import { ToastrService } from 'ngx-toastr';
-import { FirestoreService } from '../../services/firestore.service';
+import { PuntosService } from '../../services/puntos.service';
 
 
 @Component({
@@ -16,18 +16,19 @@ import { FirestoreService } from '../../services/firestore.service';
 export class MayorOrMenorComponent implements OnInit {
 
   @Input() currentUser:any;
-  //@Output() updatePuntajeTotal:EventEmitter<number> = new EventEmitter<number>()
   puntos:number = 0;
 
   cartas: CartaModel[] = [];
   cartaActual: CartaModel = {numero: 0, palo:''};
   siguienteCarta: CartaModel= {numero: 0, palo:''};
+  vidas = 3;
+  showPlayAgain:boolean = false;
 
   constructor(public toast: ToastrService,
-    public _firestore: FirestoreService) {}
+    public puntosService: PuntosService) {}
 
   sendPuntajeTotal(){
-    this._firestore.updatePuntajeTotal(this.currentUser, this.puntos);
+    this.puntosService.updatePuntos(this.currentUser, this.puntos, 'mayor-o-menor');
   }
 
   ngOnInit(): void {
@@ -83,14 +84,16 @@ export class MayorOrMenorComponent implements OnInit {
 
   ganaPuntos(){
     this.puntos++;
-    this.sendPuntajeTotal();
     this.toast.success('Correcto!');
   }
 
   pierdePuntos(){
+    this.vidas --;
     this.puntos--;
-    this.sendPuntajeTotal();
     this.toast.error('Fallaste!');
+    if(this.vidas == 0){
+      this.gameOver();
+    }
   }
 
   //reasigno mi carta actual y elimino del mazo
@@ -109,6 +112,21 @@ export class MayorOrMenorComponent implements OnInit {
     }else{
       return '🍷';
     }
+  }
+
+  gameOver(){
+    this.sendPuntajeTotal();
+    this.toast.info(`Game Over! Puntaje: ${this.puntos}`);
+    this.showPlayAgain = true;
+  }
+
+  playAgain(){
+    this.showPlayAgain = false;
+    this.puntos = 0;
+    this.vidas = 3;
+    this.cartas = [];
+    this.initCartas();
+    this.chooseRandomCarta();
   }
 
 }

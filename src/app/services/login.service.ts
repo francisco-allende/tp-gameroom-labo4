@@ -1,20 +1,33 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import { addDoc, collection, collectionData, Firestore, query, orderBy, limit, where, getDocs } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+import { UserModel } from '../models/user-model';
+import { map } from 'rxjs';
 import { Auth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from '@angular/fire/auth';
 import { ToastrService } from 'ngx-toastr';
-import { UserModel } from '../models/user-model';
+import { Router } from '@angular/router';
+
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
-
-  constructor(public auth: Auth, 
-              public toast: ToastrService,
-              public router: Router) { }
+export class LoginService {
 
   loggedUser:string='';
 
+  constructor(public firestore: Firestore,
+              public auth: Auth, 
+              public toast: ToastrService,
+              public router: Router) { }
+
+  addToLogger(emailValue:string){
+    try{
+      let col = collection(this.firestore, 'logs');
+      addDoc(col, { userEmail: emailValue, fecha: new Date()});
+    }catch(error){
+      console.error('Error en el add a los logs:', error);
+    }
+  }
 
   setLoggedUser = (email:string) => this.loggedUser = email;
   getLoggedUser = ():string => this.loggedUser;
@@ -68,6 +81,5 @@ export class AuthService {
         }
       });
     }
+
 }
-
-

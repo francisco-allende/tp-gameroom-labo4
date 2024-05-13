@@ -3,8 +3,6 @@
     background-color: rgb(145, 228, 241);
 }
 
-@media (max-width: 1300px) {
-    .main{
-        height: 170vh;
-    }
+.container{
+    padding-top: 2rem;
 }

@@ -7,14 +7,17 @@
                     <br>
                     <form [formGroup]="loginForm">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Email" [(ngModel)]="loginUser.email" [ngModelOptions]="{standalone: true}">
+                            <input type="text" class="form-control" placeholder="Email" formControlName="email">
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control" placeholder="Contraseña" [(ngModel)]="loginUser.password" [ngModelOptions]="{standalone: true}">
+                            <input type="password" class="form-control" placeholder="Contraseña" formControlName="password">
                         </div>
                         <div class="login-btns">
                             <div class="form-group">
                                 <button type="button" class="btn btn-success btn-block" (click)="login()">Iniciar Sesión</button>
+                            </div>
+                            <div class="form-group">
+                                <button type="button" class="btn btn-dark btn-block" (click)="easyLogin()">Inicio de sesión rápido</button>
                             </div>
                             <div class="form-group">
                                 <button type="button" class="btn btn-primary btn-block" (click)="goToRegister()">Registrarse</button>

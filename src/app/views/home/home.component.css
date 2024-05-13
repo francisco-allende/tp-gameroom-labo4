@@ -7,3 +7,10 @@ main{
     width: 18rem;
     height: 14rem;
 }
+
+@media (max-width: 1300px) {
+    .card{
+        margin: 1em;
+        width: 14rem;
+    }
+}

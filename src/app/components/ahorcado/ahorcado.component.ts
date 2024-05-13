@@ -2,8 +2,7 @@ import { Component, Input } from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
 import { ToastrService } from 'ngx-toastr';
-import { UserModel } from '../../models/user-model';
-import { FirestoreService } from '../../services/firestore.service';
+import { PuntosService } from '../../services/puntos.service';
 
 @Component({
   selector: 'app-ahorcado',
@@ -15,19 +14,29 @@ import { FirestoreService } from '../../services/firestore.service';
 export class AhorcadoComponent {
 
   abecedario = 'abcdefghijklmnñopqrstuvwxyz'.split('');
-  palabraOculta = 'angular'; //palabra a adivinar
+  palabraOculta = ''; 
   letrasSeleccionadas: string[] = [];
   intentosFallidos = 0;
   puntos = 0;
   showPlayAgain = false;
+  palabras: string[] = ["agua","barco","cama","gato","sol","luna","perro","calle","camioneta","mesa","taza","papel","piso","angular","rodilla","rabioso","delirio","rancho","cigarrillo","plato","planta","queso","manta","tijera","vino", ];
 
   @Input() currentUser:any;
 
   constructor(public toast: ToastrService,
-            public _firestore: FirestoreService) {}
+            public puntosService: PuntosService) {}
+
+  ngOnInit(){
+    this.palabraOculta = this.getRandomWord();
+  }
 
   handleSetUser(e:any){
     this.currentUser = e;
+  }
+
+  getRandomWord(): string {
+    const i = Math.floor(Math.random() * this.palabras.length);
+    return this.palabras[i];
   }
 
   seleccionarLetra(letra: string) {
@@ -84,13 +93,13 @@ export class AhorcadoComponent {
   playAgain(){
     this.showPlayAgain = false;
     this.puntos = 0;
-    this.palabraOculta = 'angular'; 
+    this.palabraOculta = this.getRandomWord(); 
     this.letrasSeleccionadas = [];
     this.intentosFallidos = 0;
   }
 
   sendPuntajeTotal(){
-    this._firestore.updatePuntajeTotal(this.currentUser, this.puntos);
+    this.puntosService.updatePuntos(this.currentUser, this.puntos, 'ahorcado');
   }
 
 }

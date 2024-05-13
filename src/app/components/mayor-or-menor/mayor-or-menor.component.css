@@ -14,3 +14,11 @@
 .juego{
     width: 22%;
 }
+
+.card-title{
+    font-size: 125px;
+}
+
+.card-header, .card-footer{
+    font-size: 50px;
+}
