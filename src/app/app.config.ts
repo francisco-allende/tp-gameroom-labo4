@@ -8,6 +8,7 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { getDatabase, provideDatabase } from '@angular/fire/database';
+import { provideHttpClient } from '@angular/common/http';
 
 
 export const appConfig: ApplicationConfig = {
@@ -15,6 +16,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes), 
     provideAnimations(), 
     provideToastr(), 
+    provideHttpClient(),
     importProvidersFrom(provideFirebaseApp(() => initializeApp({
       "projectId":"tp-gameroom-allende",
       "appId":"1:533090559504:web:0cf41f78c5e4ef25a68c95",

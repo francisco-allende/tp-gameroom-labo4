@@ -55,7 +55,6 @@ export class LoginService {
     logOut(){
       signOut(this.auth).then(() => {
         this.setLoggedUser('');
-        console.log(this.auth.currentUser?.email)
       })
     }
 

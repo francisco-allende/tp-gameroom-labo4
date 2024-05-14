@@ -1,0 +1,23 @@
+.main{
+    height: 100vh;
+    background-color: rgb(145, 228, 241);
+}
+
+.title{
+    margin-bottom: 2rem;
+}
+
+.color-box{
+    padding: 2em;
+    margin-right: 1em;
+}
+
+.color-box-option{
+    padding: 3em;
+    margin-right: 1em;
+}
+
+.color-box-option:hover{
+    cursor: pointer;
+}
+  

@@ -1,0 +1,18 @@
+.main{
+    height: 100vh;
+    background-color: rgb(145, 228, 241);
+}
+
+.title{
+    margin-bottom: 2rem;
+}
+
+.bandera{
+    width: 12em;
+    height: 7em;
+}
+
+.card{
+    padding: 1em;
+    background-color: black;
+}

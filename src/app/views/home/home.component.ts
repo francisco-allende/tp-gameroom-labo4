@@ -19,8 +19,10 @@ export class HomeComponent implements OnInit {
   cards = [
     { title: 'Ahorcado', text:'Pone a prueba tu habilidad para adivinar palabras en este clásico juego.', clickText:'Jugar', route: '/ahorcado' },
     { title: 'Mayor o Menor',  text:'Pone a prueba tu intuición y suma puntos en este emociante juego de cartas' , clickText: 'Jugar',  route: '/mayor-or-menor' },
-    { title: 'About Me', text:'Conoce al desarrollador de esta sala de juegos', clickText:'Ir', route: '/aboutme' },
+    { title: 'Preguntados',  text:'Pone a prueba tu intelecto y tu conocimiento del mundo' , clickText: 'Jugar',  route: '/preguntados' },
+    { title: 'Juego Propio',  text:'¡Ponete a prueba con el Desafío de los Colores! ¿Podrás en un Maestro del Color?' , clickText: 'Jugar',  route: '/juego-propio' },
     { title: 'Explicacion Juego Propio', text:'Breve tutorial del juego de mi creación', clickText:'Conocer más', route: '/explicacion-juego-propio' },
+    { title: 'About Me', text:'Conoce al desarrollador de esta sala de juegos', clickText:'Ir', route: '/aboutme' },
     { title: 'Sala de chat', text:'Comparte tus mensajes con otros usuarios de la app', clickText:'Chatear', route: '/sala-chat' },
     { title: 'Puntaje', text:'¡Descubrí cuántos puntos acumulaste!', clickText:'Ver mi puntaje', route: '/puntaje' },
   ];

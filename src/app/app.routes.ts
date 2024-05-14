@@ -28,12 +28,20 @@ export const routes: Routes = [
         loadComponent: () => import('./components/mayor-or-menor/mayor-or-menor.component').then((m) => m.MayorOrMenorComponent)
     },
     {
-        path: 'aboutme',
-        loadComponent: () => import('./components/about-me/about-me.component').then((m) => m.AboutMeComponent)
+        path: 'preguntados',
+        loadComponent: () => import('./components/preguntados/preguntados.component').then((m) => m.PreguntadosComponent)
+    },
+    {
+        path: 'juego-propio',
+        loadComponent: () => import('./components/juego-propio/juego-propio.component').then((m) => m.JuegoPropioComponent)
     },
     {
         path: 'explicacion-juego-propio',
         loadComponent: () => import('./components/explicacion-juego-propio/explicacion-juego-propio.component').then((m) => m.ExplicacionJuegoPropioComponent)
+    },
+    {
+        path: 'aboutme',
+        loadComponent: () => import('./components/about-me/about-me.component').then((m) => m.AboutMeComponent)
     },
     {
         path: 'sala-chat',
