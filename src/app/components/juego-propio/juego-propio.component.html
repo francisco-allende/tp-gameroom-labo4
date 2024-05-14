@@ -2,34 +2,36 @@
 <div class="main">
     <div class="container text-center justify-content-center align-items-center">
         <div class="title">
-            <h1 >Maestro del Color</h1>
+            <h1 >El Maestro del Color</h1>
             <br>
             @if(showOpciones){
                 <h2>¿Cuál era el {{indexToChoose}} ?</h2>
             }
         </div>
          
-        <div class="juego mx-auto">
-            @if(showOriginal){
-                <div class="row row-cols-1 row-cols-md-6 g-4">
-                    @for(color of colores; track color){
-                        <div class="color-box" [style.background-color]="color"><strong>{{ $index+1 }}</strong></div>
-                    }
-                </div>
-            }
-            <br><br>
-            @if(showOpciones){
-                <div class="row row-cols-1 row-cols-md-6 g-4">
-                    @for(opcion of opcionesAdicionales; track opcion){
-                        <div class="color-box-option" (click)="checkOption($index+1)" [style.background-color]="opcion"></div>                        
-                    }
-                </div>
-            }
-          </div>
-          
-
-  
-
+        <!--Spinner-->
+        <app-spinner [loading]="loading"></app-spinner>
+        
+        @if(!loading){
+            <div class="juego mx-auto">
+                @if(showOriginal){
+                    <div class="row row-cols-1 row-cols-md-6 g-4">
+                        @for(color of colores; track color){
+                            <div class="color-box" [style.background-color]="color"><strong>{{ $index+1 }}</strong></div>
+                        }
+                    </div>
+                }
+                <br><br>
+                @if(showOpciones){
+                    <div class="row row-cols-1 row-cols-md-6 g-4">
+                        @for(opcion of opcionesAdicionales; track opcion){
+                            <div class="color-box-option" (click)="checkOption($index+1)" [style.background-color]="opcion"></div>                        
+                        }
+                    </div>
+                }
+              </div>
+    
+        
         <br>
         <div class="intentos">
           <h4>Puntos acumulados: {{ puntos }}</h4>
@@ -41,6 +43,7 @@
               Play Again
           </button>
         }
+    }
     </div>
 </div>
 

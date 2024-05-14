@@ -16,3 +16,9 @@
     padding: 1em;
     background-color: black;
 }
+
+@media (max-width: 1300px) {
+    .main{
+        height: 140vh;
+    }
+}

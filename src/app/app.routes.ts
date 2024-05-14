@@ -4,7 +4,6 @@ import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
 import { PageNotFoundComponent } from './views/page-not-found/page-not-found.component';
 import { AboutMeComponent } from './components/about-me/about-me.component';
-import { ExplicacionJuegoPropioComponent } from './components/explicacion-juego-propio/explicacion-juego-propio.component';
 
 export const routes: Routes = [
     {
@@ -34,10 +33,6 @@ export const routes: Routes = [
     {
         path: 'juego-propio',
         loadComponent: () => import('./components/juego-propio/juego-propio.component').then((m) => m.JuegoPropioComponent)
-    },
-    {
-        path: 'explicacion-juego-propio',
-        loadComponent: () => import('./components/explicacion-juego-propio/explicacion-juego-propio.component').then((m) => m.ExplicacionJuegoPropioComponent)
     },
     {
         path: 'aboutme',

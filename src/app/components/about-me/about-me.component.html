@@ -1,22 +1,50 @@
 <app-header></app-header>
-    <div class="main">
-        <div class="container">
-            <br>
-            <div class="card mx-auto" style="width: 28rem;">
-                <img src="../../../assets/img/profile-pic-about-me.jpeg" class="card-img-top" alt="profile picture developer">
-                <div class="card-body">
-                    <h4 class="card-title text-center">¡Hola! 👋 Soy Francisco, estudiante de programación del último año en la UTN.</h4>
-                
-                    <p class="card-text">👾 Me apasiona el desarrollo web Full Stack y actualmente estoy trabajando en mejorar mis habilidades en .NET, React y Angular.</p>
-                    <p class="card-text">🔭 Actualmente me estoy enfocando en el desarrollo web Full Stack.</p>
-                    <p class="card-text">🌱 Me encuentro trabajando con .NET, Angular y Oracle ofreciendo servicios de software.</p>
-                    <p class="card-text">Contactate conmigo a traves de <a href="https://www.linkedin.com/in/franciscoallende/" target="_blank">LinkedIn</a> o escribime a <a href="mailto:franallende2000@gmail.com" target="_blank">franallende2000&#64;gmail.com</a>.</p>
-                    <p class="text-center">
-                        <a href="https://francisco-allende.github.io/Portfolio/" class="btn btn-primary" target="_blank">👉 Pasate a conocer mi trabajo</a>
-                    </p>
+<div class="main">
+    <div class="container">
+        <div class="row">
+            
+            <!-- Col izquierda: card con mi info about me -->
+            <div class="col-md-6">
+                <br>
+                <div class="card mb-4">
+                    <img src="../../../assets/img/profile-pic-about-me.jpeg" class="card-img-top" alt="profile picture developer">
+                    <div class="card-body">
+                        <h4 class="card-title text-center">¡Hola! 👋 Soy Francisco, estudiante de programación del último año en la UTN.</h4>
+                        <p class="card-text">👾 Me apasiona el desarrollo web Full Stack y actualmente estoy trabajando en mejorar mis habilidades en .NET, React y Angular.</p>
+                        <p class="card-text">🔭 Actualmente me estoy enfocando en el desarrollo web Full Stack.</p>
+                        <p class="card-text">🌱 Me encuentro trabajando con .NET, Angular y Oracle ofreciendo servicios de software.</p>
+                        <p class="card-text">💪 Soy un apasionado de los desafíos lúdicos.</p>
+                        <p class="card-text">Contactate conmigo a través de <a href="https://www.linkedin.com/in/franciscoallende/" target="_blank">LinkedIn</a> o escribime a <a href="mailto:franallende2000@gmail.com" target="_blank">franallende2000&#64;gmail.com</a>.</p>
+                        <p class="text-center">
+                            <a href="https://francisco-allende.github.io/Portfolio/" class="btn btn-primary" target="_blank">👉 Pasate a conocer mi trabajo</a>
+                        </p>
+                    </div>
                 </div>
             </div>
-            
+
+            <!-- Col derecha: tutorial del juego -->
+            <div class="col-md-6">
+                <br>
+                <div class="card bg-white p-4">
+                    <h1 class="text-center mb-4">Tutorial del juego propio "El Maestro del Color"</h1>
+                    <p>¡Bienvenido al tutorial del juego "El Maestro del Color"! En este juego, vas a poner a prueba tu memoria visual y tu capacidad para identificar colores. Acá te explicamos cómo jugar:</p>
+                    <h2 class="mt-2">Reglas del juego:</h2>
+                    <ol>
+                        <li>El juego mostrará una secuencia de colores durante 3 segundos.</li>
+                        <li>Después de la secuencia, los colores se ocultan y se desordenan.</li>
+                        <li>Se te preguntará cuál era el número del color que se mostró en la secuencia.</li>
+                        <li>Si adivinas correctamente, ganas puntos y se repete el ciclo con una nueva secuencia de colores.</li>
+                        <li>Si te equivocas, perdes una vida y un punto. Tenes un total de 3 vidas.</li>
+                        <li>El juego continuará hasta que pierdas todas tus vidas.</li>
+                    </ol>
+                    <h2 class="mt-2">Cómo jugar:</h2>
+                    <p>Para seleccionar tu respuesta, simplemente hace clic en el color que creas que corresponde al número mostrado en la secuencia. Si acertas, ganás puntos; de lo contrario, perdes una vida y un punto.</p>
+                    <img src="../../../assets/img/colorInit.png" class="card-img-top" alt="secuencia colores original">
+                    <br>
+                    <img src="../../../assets/img/colorOption.png" class="card-img-top" alt="secuencia colores a elegir">
+            </div>
+            <br>
         </div>
     </div>
+</div>
 <app-footer></app-footer>

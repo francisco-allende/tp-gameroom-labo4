@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
+import { SpinnerComponent } from '../spinner/spinner.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ApiPaisesService } from '../../services/api-paises.service';
 import { ToastrService } from 'ngx-toastr';
@@ -11,13 +12,14 @@ import { PaisModel } from '../../models/pais.-model';
 @Component({
   selector: 'app-preguntados',
   standalone: true,
-  imports: [HeaderComponent, FooterComponent, HttpClientModule],
+  imports: [HeaderComponent, FooterComponent, SpinnerComponent, HttpClientModule],
   templateUrl: './preguntados.component.html',
   styleUrl: './preguntados.component.css'
 })
 export class PreguntadosComponent {
   
   @Input() currentUser:any;
+  loading: boolean = false;
   private paisesSubscription: Subscription | undefined;
   paises:PaisModel[] = [];
   ochoPaises:PaisModel[] = [];
@@ -35,9 +37,11 @@ export class PreguntadosComponent {
 
   //Para evitar problemas de asincronismo, llamamos funciones y cargamos data dentro de la suscripcion
   ngOnInit():void{
+    this.loading = true;
     this.paisesSubscription = this.api.getCountries().subscribe(data => {
       this.paises = data;
       this.chooseRandomCountry(); 
+      this.loading = false;
     });
   } 
 
@@ -108,9 +112,11 @@ export class PreguntadosComponent {
     this.puntos = 0;
     this.vidas = 3;
     this.paises = [];
+    this.loading = true;
     this.paisesSubscription = this.api.getCountries().subscribe(data => {
       this.paises = data;
       this.chooseRandomCountry(); 
+      this.loading = false;
     });
   }
 

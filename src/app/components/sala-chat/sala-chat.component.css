@@ -38,27 +38,27 @@
 
   .chat-bubble-me::after, .chat-bubble-other::after {
     content: '';
-	position: absolute;
-	top: 10%;
-	width: 0;
-	height: 0;
-	border: 14px solid transparent;
-	border-top: 0;
-	margin-top: -7px;
+    position: absolute;
+    top: 10%;
+    width: 0;
+    height: 0;
+    border: 14px solid transparent;
+    border-top: 0;
+    margin-top: -7px;
   }
   
   .chat-bubble-me::after {
-	left: 0;
-	border-left: 0;
-	border-right-color: #128c7e;
-	margin-left: -14px;
+    left: 0;
+    border-left: 0;
+    border-right-color: #128c7e;
+    margin-left: -14px;
   }
 
   .chat-bubble-other::after {    
-	right: 0;
-	border-left-color: #075e54;
-	border-right: 0;
-	margin-right: -14px;
+    right: 0;
+    border-left-color: #075e54;
+    border-right: 0;
+    margin-right: -14px;
   }
   
   .message {

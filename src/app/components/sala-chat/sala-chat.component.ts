@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
+import { SpinnerComponent } from '../spinner/spinner.component';
 import { ChatService } from '../../services/chat.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Timestamp } from 'firebase/firestore';
@@ -9,13 +10,14 @@ import { Timestamp } from 'firebase/firestore';
 @Component({
   selector: 'app-sala-chat',
   standalone: true,
-  imports: [HeaderComponent, FooterComponent, FormsModule, ReactiveFormsModule, CommonModule],
+  imports: [HeaderComponent, FooterComponent, SpinnerComponent, FormsModule, ReactiveFormsModule, CommonModule],
   templateUrl: './sala-chat.component.html',
   styleUrl: './sala-chat.component.css'
 })
 export class SalaChatComponent {
   
   @Input() currentUser:any;
+  loading: boolean = false;
   newMessage: string = '';
   messages: any[] = [];
 
@@ -23,8 +25,10 @@ export class SalaChatComponent {
 
 
   ngOnInit(): void {
+    this.loading = true;
     this.chatService.getAllMensajesSalaChat().subscribe(mensajes => {
       this.messages = mensajes;
+      this.loading = false;
     });
   }
 

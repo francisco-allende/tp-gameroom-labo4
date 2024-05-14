@@ -5,6 +5,10 @@
                 <h1 >Sala de chat</h1>
             </div>
 
+            <!--Spinner-->
+            <app-spinner [loading]="loading"></app-spinner>
+
+            @if(!loading){
             <div class="container screen">
                 <ul class="list-group">
 
@@ -32,7 +36,7 @@
                 <input type="text" class="form-control" placeholder="Escribe tu mensaje..." [(ngModel)]="newMessage">
                 <button class="btn btn-primary"  [disabled]="!newMessage.trim()" (click)="sendMessage()">Enviar</button>
             </div>
-         
-          </div>  
+            }
+        </div>  
     </div>
 <app-footer></app-footer>

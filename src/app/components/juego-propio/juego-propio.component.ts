@@ -1,19 +1,22 @@
 import { Component, Input } from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
+import { SpinnerComponent } from '../spinner/spinner.component';
 import { JuegoPropioService } from '../../services/juego-propio.service';
 import { PuntosService } from '../../services/puntos.service';
 import { ToastrService } from 'ngx-toastr';
+import { faL } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-juego-propio',
   standalone: true,
-  imports: [HeaderComponent, FooterComponent],
+  imports: [HeaderComponent, FooterComponent, SpinnerComponent],
   templateUrl: './juego-propio.component.html',
   styleUrl: './juego-propio.component.css'
 })
 export class JuegoPropioComponent {
   @Input() currentUser:any;
+  loading: boolean = false;
   vidas:number = 3;
   showPlayAgain:boolean = false;
   puntos:number = 0;
@@ -26,10 +29,6 @@ export class JuegoPropioComponent {
   showOriginal = true;
   indexToChoose = 0;
 
-  
-  
-
-
   constructor(private api: JuegoPropioService, 
               private puntosService: PuntosService,
               private toast: ToastrService) { }
@@ -41,10 +40,12 @@ export class JuegoPropioComponent {
   
 
   loadData(): void {
+    this.loading = true;
     this.colores = []; 
     this.api.getRandomColor(this.cantidadColores).subscribe(data => {
       this.colores = data;
       this.opcionesAdicionales = this.randomSort(data);
+      this.loading = false;
     });
   }
 
@@ -121,6 +122,6 @@ export class JuegoPropioComponent {
   }
 
   sendPoints(){
-    this.puntosService.updatePuntos(this.currentUser, this.puntos, 'juego-propio');
+    this.puntosService.updatePuntos(this.currentUser, this.puntos, 'maestro-del-color');
   }
 }
